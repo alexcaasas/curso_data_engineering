@@ -88,7 +88,12 @@ sources:
       loaded_at_field: _fivetran_synced
       columns:
         - name: promo_id
+          data_tests:
+            - unique
+            - not null         
         - name: discount
+          data_tests:
+            - positive_values
         - name: status
         - name: _fivetran_deleted
         - name: _fivetran_synced
