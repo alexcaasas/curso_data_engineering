@@ -18,7 +18,7 @@ limpio_orders as (
     promo_id,
     CONVERT_TIMEZONE('UTC', estimated_delivery_at) as estimated_delivery_at_utc,
     order_cost as order_cost_usd,
-    status,
+    md5(status) as status_id,
     _fivetran_deleted,
     CONVERT_TIMEZONE('UTC', _fivetran_synced) as _fivetran_synced_utc
     from todas_orders

@@ -13,6 +13,10 @@ limpio_users as (
     select 
     user_id,
     address_id,
+    first_name,
+    last_name,
+    phone_number,
+    email,
     CONVERT_TIMEZONE('UTC', created_at) as created_at_utc,
     CONVERT_TIMEZONE('UTC', updated_at) as updated_at_utc,
     _fivetran_deleted,
