@@ -89,9 +89,15 @@ sources:
           - name: victimas_mortales
             data_type: number
             description: ""
+            tests:
+              - positive_values
           - name: victimas_toxic_positivo
             data_type: number
             description: ""
+            tests:
+              - positive_values
           - name: resultado_toxic_positivo
             data_type: number
             description: ""
+            tests:
+              - positive_values
