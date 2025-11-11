@@ -14,6 +14,8 @@ sources:
             description: ""
           - name: data
             data_type: varchar
+            tests:
+              - not_null
             description: ""
           - name: territorio_intcf
             data_type: varchar

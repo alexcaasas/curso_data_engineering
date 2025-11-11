@@ -12,7 +12,10 @@ with accidentes as (
 uniendo_provincias as (
     select
     distinct {{ dbt_utils.generate_surrogate_key([ 'provincia' ]) }} as id_provincia,
-    SPLIT_PART(provincia, '/', 1) as provincia,
+    CASE 
+        WHEN provincia <> 'Araba/Álava' THEN SPLIT_PART(provincia, '/', 1)
+        ELSE SPLIT_PART(provincia, '/', 2)
+    END as provincia,
     {{ dbt_utils.generate_surrogate_key([ 'ccaa' ]) }} as id_com_autonoma
     from accidentes 
 )
