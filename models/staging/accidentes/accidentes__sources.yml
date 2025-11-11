@@ -1,0 +1,95 @@
+version: 2
+
+sources:
+  - name: desarrollo
+    description: ""
+    database: alumno1_dev_bronze_db
+    schema: accidentes_trafico
+    tables:
+      - name: accidentes
+        description: ""
+        columns:
+          - name: ano
+            data_type: number
+            description: ""
+          - name: data
+            data_type: varchar
+            description: ""
+          - name: territorio_intcf
+            data_type: varchar
+            description: ""
+          - name: ccaa
+            data_type: varchar
+            description: ""
+          - name: provincia
+            data_type: varchar
+            description: ""
+          - name: organismo
+            data_type: varchar
+            description: ""
+          - name: zona
+            data_type: varchar
+            description: ""
+          - name: rol_no_siniestro
+            data_type: varchar
+            description: ""
+          - name: tipo_vehiculo
+            data_type: varchar
+            description: ""
+          - name: rango_de_edade
+            data_type: varchar
+            description: ""
+          - name: sexo
+            data_type: varchar
+            description: ""
+          - name: resultado_toxicoloxico
+            data_type: varchar
+            description: ""
+          - name: etanol
+            data_type: varchar
+            description: ""
+          - name: drogas
+            data_type: varchar
+            description: ""
+          - name: cocaina
+            data_type: varchar
+            description: ""
+          - name: cannabis
+            data_type: varchar
+            description: ""
+          - name: opiaceos
+            data_type: varchar
+            description: ""
+          - name: anfetamina_y_relacionados
+            data_type: varchar
+            description: ""
+          - name: cetamina
+            data_type: varchar
+            description: ""
+          - name: psicofarmacos
+            data_type: varchar
+            description: ""
+          - name: benzodiacepinas
+            data_type: varchar
+            description: ""
+          - name: antipsicoticos
+            data_type: varchar
+            description: ""
+          - name: antidepresivos
+            data_type: varchar
+            description: ""
+          - name: antiepilepticos
+            data_type: varchar
+            description: ""
+          - name: opioides
+            data_type: varchar
+            description: ""
+          - name: victimas_mortales
+            data_type: number
+            description: ""
+          - name: victimas_toxic_positivo
+            data_type: number
+            description: ""
+          - name: resultado_toxic_positivo
+            data_type: number
+            description: ""
