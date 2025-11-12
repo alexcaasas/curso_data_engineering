@@ -6,7 +6,7 @@ sources:
     database: alumno1_dev_bronze_db
     schema: accidentes_trafico
     tables:
-      - name: accidentes
+      - name: accidentes_final
         description: ""
         columns:
           - name: ano
@@ -14,8 +14,6 @@ sources:
             description: ""
           - name: data
             data_type: varchar
-            tests:
-              - not_null
             description: ""
           - name: territorio_intcf
             data_type: varchar
@@ -89,15 +87,15 @@ sources:
           - name: victimas_mortales
             data_type: number
             description: ""
-            tests:
-              - positive_values
           - name: victimas_toxic_positivo
             data_type: number
             description: ""
-            tests:
-              - positive_values
           - name: resultado_toxic_positivo
             data_type: number
             description: ""
-            tests:
-              - positive_values
+          - name: dni
+            data_type: varchar
+            description: ""
+          - name: matricula
+            data_type: varchar
+            description: ""

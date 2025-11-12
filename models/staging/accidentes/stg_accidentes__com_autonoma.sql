@@ -6,7 +6,7 @@
 
 with accidentes as (
     select *
-    from {{ source ('desarrollo', 'accidentes') }}
+    from {{ source ('desarrollo', 'accidentes_final') }}
 ),
 
 uniendo_com_autonoma as (
