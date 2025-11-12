@@ -9,30 +9,15 @@ with accidentes as (
     from {{ source ('desarrollo', 'accidentes_final') }}
 ),
 
-limpio_motivos as (
-    select
-    CAST(
-        CASE WHEN Etanol = '+' THEN TRUE
-            ELSE FALSE
-        END AS BOOLEAN
-    ) AS Etanol,
-    CAST(
-        CASE WHEN Drogas = '+' THEN TRUE
-            ELSE FALSE
-        END AS BOOLEAN
-    ) AS Drogas    
-    from accidentes 
-),
-
 motivos as (
     select
     {{ dbt_utils.generate_surrogate_key(['Etanol', 'Drogas']) }} as id_motivo,
-    CASE WHEN Etanol = True and Drogas = True THEN 'Alcohol y Drogas'
-        WHEN Etanol = True and Drogas = False THEN 'Alcohol'
-        WHEN Etanol = False and Drogas = True THEN 'Drogas'
-        WHEN Etanol = False and Drogas = False THEN 'Limpio'
+    CASE WHEN Etanol = '+' and Drogas = '+' THEN 'Alcohol y Drogas'
+        WHEN Etanol = '+' and Drogas = '-' THEN 'Alcohol'
+        WHEN Etanol = '-' and Drogas = '+' THEN 'Drogas'
+        WHEN Etanol = '-' and Drogas = '-' THEN 'Limpio'
     END AS motivo
-    from limpio_motivos
+    from accidentes
 ),
 
 agrupo_motivos as (
