@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: desarrollo
     description: ""
-    database: alumno1_dev_bronze_db
+    database: "{{ env_var('DBT_ENVIRONMENTS') }}_bronze_db"
     schema: accidentes_trafico
     tables:
       - name: accidentes_final
