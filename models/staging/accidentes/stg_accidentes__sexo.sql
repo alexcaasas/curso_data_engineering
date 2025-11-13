@@ -9,11 +9,11 @@ with accidentes as (
     from {{ source ('desarrollo', 'accidentes_final') }}
 ),
 
-uniendo_vias as (
+uniendo_sexo as (
     select
-    distinct {{ dbt_utils.generate_surrogate_key([ 'zona' ]) }} as id_via,
-    zona::varchar as via
+    distinct {{ dbt_utils.generate_surrogate_key([ 'sexo' ]) }} as id_sexo,
+    sexo,
     from accidentes 
 )
 
-select * from uniendo_vias
+select * from uniendo_sexo

@@ -39,6 +39,7 @@ valores_base as (
     {{ dbt_utils.generate_surrogate_key([ 'provincia' ]) }} as id_provincia,
     {{ dbt_utils.generate_surrogate_key([ 'matricula' ]) }} as id_vehiculo,
     {{ dbt_utils.generate_surrogate_key([ 'zona' ]) }} as id_via,
+    TO_DATE(data, 'DD/MM/YYYY') AS fecha_accidente,
     victimas_mortales as num_victimas_mortales,
     resultado_toxicoloxico as test_toxicologico,
     {{ dbt_utils.generate_surrogate_key(['Etanol', 'Drogas']) }} as id_motivo,
@@ -52,6 +53,7 @@ uno_todo as (
         p.id_provincia,
         v.id_vehiculo,
         vi.id_via,
+        b.fecha_accidente,
         b.num_victimas_mortales,
         b.test_toxicologico,
         m.id_motivo
