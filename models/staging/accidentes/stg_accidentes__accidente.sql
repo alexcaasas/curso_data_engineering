@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='view'
+        materialized='table'
     )
 }}
 with accidentes as (
@@ -28,9 +28,9 @@ conductores as (
     from {{ ref ('stg_accidentes__conductor')}}
 ),
 
-vias as (
+tipos_vias as (
     select id_via
-    from {{ ref ('stg_accidentes__via')}}
+    from {{ ref ('stg_accidentes__tipo_via')}}
 ),
 
 valores_base as (
@@ -42,6 +42,7 @@ valores_base as (
     TO_DATE(data, 'DD/MM/YYYY') AS fecha_accidente,
     victimas_mortales as num_victimas_mortales,
     resultado_toxicoloxico as test_toxicologico,
+    dni,
     {{ dbt_utils.generate_surrogate_key(['Etanol', 'Drogas']) }} as id_motivo,
     from accidentes
 ),
@@ -54,6 +55,7 @@ uno_todo as (
         v.id_vehiculo,
         vi.id_via,
         b.fecha_accidente,
+        b.dni,
         b.num_victimas_mortales,
         b.test_toxicologico,
         m.id_motivo
@@ -66,8 +68,14 @@ uno_todo as (
         on v.id_vehiculo = b.id_vehiculo
     left join motivos m
         on m.id_motivo = b.id_motivo
-    left join vias vi 
+    left join tipos_vias vi 
         on vi.id_via = b.id_via
 )
 
 select * from uno_todo
+
+--{% if is_incremental() %}
+
+--  where fecha_accidente > (select max(fecha_accidente) from {{ this }})
+
+--{% endif %}

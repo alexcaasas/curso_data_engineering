@@ -12,7 +12,7 @@ with accidentes as (
 uniendo_vias as (
     select
     distinct {{ dbt_utils.generate_surrogate_key([ 'zona' ]) }} as id_via,
-    zona::varchar as via
+    zona::varchar as tipo_via
     from accidentes 
 )
 
