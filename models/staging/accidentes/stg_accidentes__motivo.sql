@@ -12,7 +12,7 @@ with accidentes as (
 motivos as (
     select
     distinct {{ dbt_utils.generate_surrogate_key(["Etanol", "Drogas"]) }} as id_motivo,
-    {{ motivo_toxicologico(["Etanol", "Drogas"]) }} as motivos
+    {{ motivo_toxicologico(["Etanol", "Drogas"]) }} as motivo
     from accidentes
 )
 

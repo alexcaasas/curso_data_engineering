@@ -4,34 +4,15 @@ sources:
   - name: modelos_silver
     description: ""
     database: alumno1_dev_silver_db
-    schema: dbt_amartin
+    schema: accidentes
     tables:
-      - name: fichero
-        description: ""
-        columns:
-          - name: name
-            data_type: varchar
-            description: ""
-          - name: year
-            data_type: varchar
-            description: ""
-          - name: income
-            data_type: varchar
-            description: ""
-          - name: education
-            data_type: varchar
-            description: ""
-          - name: graduation
-            data_type: number
-            description: ""
-          - name: standing
-            data_type: varchar
-            description: ""
-
       - name: stg_accidentes__accidente
         description: ""
         columns:
-          - name: id_via
+          - name: id_accidente
+            data_type: varchar
+            description: ""
+          - name: id_conductor
             data_type: varchar
             description: ""
           - name: id_provincia
@@ -40,7 +21,19 @@ sources:
           - name: id_vehiculo
             data_type: varchar
             description: ""
-          - name: id_conductor
+          - name: id_via
+            data_type: varchar
+            description: ""
+          - name: fecha_accidente
+            data_type: date
+            description: ""
+          - name: num_victimas_mortales
+            data_type: number
+            description: ""
+          - name: test_toxicologico
+            data_type: varchar
+            description: ""
+          - name: id_motivo
             data_type: varchar
             description: ""
 
@@ -63,7 +56,7 @@ sources:
           - name: dni
             data_type: varchar
             description: ""
-          - name: sexo
+          - name: id_sexo
             data_type: varchar
             description: ""
           - name: id_rango_edades
@@ -76,7 +69,7 @@ sources:
           - name: id_motivo
             data_type: varchar
             description: ""
-          - name: motivo
+          - name: motivos
             data_type: varchar
             description: ""
 
@@ -103,6 +96,16 @@ sources:
             data_type: varchar
             description: ""
 
+      - name: stg_accidentes__sexo
+        description: ""
+        columns:
+          - name: id_sexo
+            data_type: varchar
+            description: ""
+          - name: sexo
+            data_type: varchar
+            description: ""
+
       - name: stg_accidentes__tipo_vehiculo
         description: ""
         columns:
@@ -110,6 +113,16 @@ sources:
             data_type: varchar
             description: ""
           - name: tipo_vehiculo
+            data_type: varchar
+            description: ""
+
+      - name: stg_accidentes__tipo_via
+        description: ""
+        columns:
+          - name: id_via
+            data_type: varchar
+            description: ""
+          - name: tipo_via
             data_type: varchar
             description: ""
 
@@ -133,202 +146,5 @@ sources:
             data_type: varchar
             description: ""
           - name: via
-            data_type: varchar
-            description: ""
-
-      - name: stg_sql_server_dbo__address
-        description: ""
-        columns:
-          - name: addresses_id
-            data_type: varchar
-            description: ""
-          - name: address_name
-            data_type: varchar
-            description: ""
-          - name: zipcode_id
-            data_type: varchar
-            description: ""
-
-      - name: stg_sql_server_dbo__addresses
-        description: ""
-        columns:
-          - name: address_id
-            data_type: varchar
-            description: ""
-          - name: addresses_id
-            data_type: varchar
-            description: ""
-          - name: _fivetran_deleted
-            data_type: boolean
-            description: ""
-          - name: _fivetran_synced_utc
-            data_type: timestamp_tz
-            description: ""
-
-      - name: stg_sql_server_dbo__country
-        description: ""
-        columns:
-          - name: country_id
-            data_type: varchar
-            description: ""
-          - name: country
-            data_type: varchar
-            description: ""
-
-      - name: stg_sql_server_dbo__orders
-        description: ""
-        columns:
-          - name: id_shipping_service
-            data_type: varchar
-            description: ""
-          - name: shipping_cost_usd
-            data_type: float
-            description: ""
-          - name: address_id
-            data_type: varchar
-            description: ""
-          - name: created_at_utc
-            data_type: timestamp_tz
-            description: ""
-          - name: promo_id
-            data_type: varchar
-            description: ""
-          - name: estimated_delivery_at_utc
-            data_type: timestamp_tz
-            description: ""
-          - name: order_cost_usd
-            data_type: float
-            description: ""
-          - name: status_id
-            data_type: varchar
-            description: ""
-          - name: _fivetran_deleted
-            data_type: boolean
-            description: ""
-          - name: _fivetran_synced_utc
-            data_type: timestamp_tz
-            description: ""
-
-      - name: stg_sql_server_dbo__products
-        description: ""
-        columns:
-          - name: product_id
-            data_type: varchar
-            description: ""
-          - name: price
-            data_type: float
-            description: ""
-          - name: name
-            data_type: varchar
-            description: ""
-          - name: inventory
-            data_type: number
-            description: ""
-          - name: _fivetran_deleted
-            data_type: boolean
-            description: ""
-          - name: _fivetran_synced
-            data_type: timestamp_tz
-            description: ""
-
-      - name: stg_sql_server_dbo__promos
-        description: ""
-        columns:
-          - name: promo_id
-            data_type: varchar
-            description: ""
-          - name: promo_name
-            data_type: varchar
-            description: ""
-          - name: dolar_discount
-            data_type: number
-            description: ""
-          - name: status
-            data_type: varchar
-            description: ""
-          - name: _fivetran_deleted
-            data_type: boolean
-            description: ""
-          - name: _fivetran_synced_utc
-            data_type: timestamp_tz
-            description: ""
-
-      - name: stg_sql_server_dbo__shipping_service
-        description: ""
-        columns:
-          - name: id_shipping_service
-            data_type: varchar
-            description: ""
-          - name: shipping_service_name
-            data_type: varchar
-            description: ""
-
-      - name: stg_sql_server_dbo__state
-        description: ""
-        columns:
-          - name: state_id
-            data_type: varchar
-            description: ""
-          - name: state
-            data_type: varchar
-            description: ""
-          - name: country_id
-            data_type: varchar
-            description: ""
-
-      - name: stg_sql_server_dbo__status
-        description: ""
-        columns:
-          - name: status_id
-            data_type: varchar
-            description: ""
-          - name: status
-            data_type: varchar
-            description: ""
-
-      - name: stg_sql_server_dbo__users
-        description: ""
-        columns:
-          - name: user_id
-            data_type: varchar
-            description: ""
-          - name: address_id
-            data_type: varchar
-            description: ""
-          - name: first_name
-            data_type: varchar
-            description: ""
-          - name: last_name
-            data_type: varchar
-            description: ""
-          - name: phone_number
-            data_type: varchar
-            description: ""
-          - name: email
-            data_type: varchar
-            description: ""
-          - name: created_at_utc
-            data_type: timestamp_tz
-            description: ""
-          - name: updated_at_utc
-            data_type: timestamp_tz
-            description: ""
-          - name: _fivetran_deleted
-            data_type: boolean
-            description: ""
-          - name: _fivetran_synced_utc
-            data_type: timestamp_tz
-            description: ""
-
-      - name: stg_sql_server_dbo__zipcode
-        description: ""
-        columns:
-          - name: zipcode_id
-            data_type: varchar
-            description: ""
-          - name: zipcode
-            data_type: number
-            description: ""
-          - name: state_id
             data_type: varchar
             description: ""
