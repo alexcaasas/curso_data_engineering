@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='table'
+        materialized='incremental'
     )
 }}
 with accidentes as (
@@ -42,7 +42,6 @@ valores_base as (
     TO_DATE(data, 'DD/MM/YYYY') AS fecha_accidente,
     victimas_mortales as num_victimas_mortales,
     resultado_toxicoloxico as test_toxicologico,
-    dni,
     {{ dbt_utils.generate_surrogate_key(['Etanol', 'Drogas']) }} as id_motivo,
     from accidentes
 ),
@@ -55,7 +54,6 @@ uno_todo as (
         v.id_vehiculo,
         vi.id_via,
         b.fecha_accidente,
-        b.dni,
         b.num_victimas_mortales,
         b.test_toxicologico,
         m.id_motivo
@@ -74,8 +72,8 @@ uno_todo as (
 
 select * from uno_todo
 
---{% if is_incremental() %}
+{% if is_incremental() %}
 
---  where fecha_accidente > (select max(fecha_accidente) from {{ this }})
+  where fecha_accidente > (select max(fecha_accidente) from {{ this }})
 
---{% endif %}
+{% endif %}

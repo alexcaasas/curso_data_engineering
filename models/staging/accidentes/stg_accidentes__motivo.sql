@@ -11,20 +11,17 @@ with accidentes as (
 
 motivos as (
     select
-    {{ dbt_utils.generate_surrogate_key(['Etanol', 'Drogas']) }} as id_motivo,
-    CASE WHEN Etanol = '+' and Drogas = '+' THEN 'Alcohol y Drogas'
+    distinct {{ dbt_utils.generate_surrogate_key(["Etanol", "Drogas"]) }} as id_motivo,
+    {{ motivo_toxicologico(["Etanol", "Drogas"]) }} as motivos
+    from accidentes
+)
+
+/*
+CASE WHEN Etanol = '+' and Drogas = '+' THEN 'Alcohol y Drogas'
         WHEN Etanol = '+' and Drogas = '-' THEN 'Alcohol'
         WHEN Etanol = '-' and Drogas = '+' THEN 'Drogas'
         WHEN Etanol = '-' and Drogas = '-' THEN 'Limpio'
-    END AS motivo
-    from accidentes
-),
+END AS motivos
+*/
 
-agrupo_motivos as (
-    select id_motivo, motivo
-    from motivos
-    group by motivo, id_motivo
-)
-
-
-select * from agrupo_motivos
+select * from motivos

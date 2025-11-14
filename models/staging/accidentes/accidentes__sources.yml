@@ -15,6 +15,8 @@ sources:
           - name: data
             data_type: varchar
             description: ""
+            tests: 
+              - not_null
           - name: territorio_intcf
             data_type: varchar
             description: ""
@@ -48,15 +50,27 @@ sources:
           - name: etanol
             data_type: varchar
             description: ""
+            tests:
+              - accepted_values:
+                  values: ['+' , '-']
           - name: drogas
             data_type: varchar
             description: ""
+            tests:
+              - accepted_values:
+                  values: ['+' , '-']
           - name: cocaina
             data_type: varchar
             description: ""
+            tests:
+              - accepted_values:
+                  values: ['+' , '-']
           - name: cannabis
             data_type: varchar
             description: ""
+            tests:
+              - accepted_values:
+                  values: ['+' , '-']
           - name: opiaceos
             data_type: varchar
             description: ""
@@ -78,6 +92,9 @@ sources:
           - name: antidepresivos
             data_type: varchar
             description: ""
+            tests:
+              - accepted_values:
+                  values: ['+' , '-']
           - name: antiepilepticos
             data_type: varchar
             description: ""
@@ -87,15 +104,25 @@ sources:
           - name: victimas_mortales
             data_type: number
             description: ""
+            tests:
+              - valores_no_negativos
           - name: victimas_toxic_positivo
             data_type: number
             description: ""
+            tests:
+              - valores_no_negativos
           - name: resultado_toxic_positivo
             data_type: number
             description: ""
+            tests:
+              - valores_no_negativos
           - name: dni
             data_type: varchar
             description: ""
+            tests:
+              - not_null
           - name: matricula
             data_type: varchar
             description: ""
+            tests:
+              - not_null
