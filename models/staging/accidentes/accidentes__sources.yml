@@ -15,7 +15,7 @@ sources:
           - name: data
             data_type: varchar
             description: ""
-            tests: 
+            tests:
               - not_null
           - name: territorio_intcf
             data_type: varchar
@@ -52,25 +52,29 @@ sources:
             description: ""
             tests:
               - accepted_values:
-                  values: ['+' , '-']
+                  arguments:
+                    values: ['+', '-']
           - name: drogas
             data_type: varchar
             description: ""
             tests:
               - accepted_values:
-                  values: ['+' , '-']
+                  arguments:
+                    values: ['+', '-']
           - name: cocaina
             data_type: varchar
             description: ""
             tests:
               - accepted_values:
-                  values: ['+' , '-']
+                  arguments:
+                    values: ['+', '-']
           - name: cannabis
             data_type: varchar
             description: ""
             tests:
               - accepted_values:
-                  values: ['+' , '-']
+                  arguments:
+                    values: ['+', '-']
           - name: opiaceos
             data_type: varchar
             description: ""
@@ -94,7 +98,8 @@ sources:
             description: ""
             tests:
               - accepted_values:
-                  values: ['+' , '-']
+                  arguments:
+                    values: ['+', '-']
           - name: antiepilepticos
             data_type: varchar
             description: ""
