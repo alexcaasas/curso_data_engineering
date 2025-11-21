@@ -11,7 +11,7 @@ with tipo_vehiculo as (
 
 vehiculo as (
     select
-    {{ dbt_utils.generate_surrogate_key([ 'v.matricula' ]) }} as id_vehiculo,
+    v.id_vehiculo,
     v.matricula,
     tv.tipo_vehiculo
     from {{ ref ('stg_accidentes__vehiculo')}} v

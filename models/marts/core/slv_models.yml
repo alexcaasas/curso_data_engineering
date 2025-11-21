@@ -27,6 +27,9 @@ sources:
           - name: fecha_accidente
             data_type: date
             description: ""
+          - name: matricula
+            data_type: varchar
+            description: ""
           - name: num_victimas_mortales
             data_type: number
             description: ""
@@ -69,7 +72,7 @@ sources:
           - name: id_motivo
             data_type: varchar
             description: ""
-          - name: motivos
+          - name: motivo
             data_type: varchar
             description: ""
 
@@ -92,7 +95,7 @@ sources:
           - name: id_rango_edades
             data_type: varchar
             description: ""
-          - name: rango_edades
+          - name: rango_edad
             data_type: varchar
             description: ""
 
@@ -136,15 +139,5 @@ sources:
             data_type: varchar
             description: ""
           - name: id_tipo_vehiculo
-            data_type: varchar
-            description: ""
-
-      - name: stg_accidentes__via
-        description: ""
-        columns:
-          - name: id_via
-            data_type: varchar
-            description: ""
-          - name: via
             data_type: varchar
             description: ""

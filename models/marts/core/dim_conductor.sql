@@ -16,7 +16,7 @@ rango_edades as (
 
 conductor as (
     select
-    {{ dbt_utils.generate_surrogate_key([ 'c.dni' ]) }} as id_conductor,
+    c.id_conductor,
     c.dni,
     s.sexo,
     re.rango_edad

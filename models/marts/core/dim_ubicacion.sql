@@ -16,7 +16,7 @@ com_autonomas as (
 
 ubicacion as (
     select
-    {{ dbt_utils.generate_surrogate_key([ 'p.provincia', 'ca.com_autonoma' ]) }} as id_ubicacion, 
+    p.id_provincia, 
     p.provincia,
     ca.com_autonoma
     from provincias p
