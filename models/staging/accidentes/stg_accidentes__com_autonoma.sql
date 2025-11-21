@@ -6,12 +6,12 @@
 
 with accidentes as (
     select *
-    from {{ source ('desarrollo', 'accidentes_final') }}
+    from {{ ref('base_source') }}
 ),
 
 uniendo_com_autonoma as (
     select
-    distinct {{ dbt_utils.generate_surrogate_key([ 'ccaa' ]) }} as id_com_autonoma,
+    distinct id_com_autonoma,
     CASE 
         WHEN REPLACE(ccaa, '-', ' ') = 'Canarias' THEN 'Islas Canarias'
         ELSE REPLACE(ccaa, '-', ' ')

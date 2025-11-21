@@ -6,15 +6,15 @@
 
 with accidentes as (
     select *
-    from {{ source ('desarrollo', 'accidentes_final') }}
+    from {{ ref ('base_source') }}
 ),
 
 uniendo_conductor as (
     select
-    distinct {{ dbt_utils.generate_surrogate_key([ 'dni' ]) }} as id_conductor,
+    distinct id_conductor,
     dni,
-    {{ dbt_utils.generate_surrogate_key([ 'sexo' ]) }} as id_sexo,
-    {{ dbt_utils.generate_surrogate_key([ 'rango_de_edade' ]) }} as id_rango_edades
+    id_sexo,
+    id_rango_edades
     from accidentes 
 )
 

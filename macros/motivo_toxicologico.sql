@@ -2,24 +2,26 @@
 
 (
     case
-        when
+        -- Caso limpio: todos son '-'
+        when (
             {% for col in cols %}
                 {{ col }} = '-' {% if not loop.last %} and {% endif %}
             {% endfor %}
+        )
         then 'Limpio'
 
         else (
             regexp_replace(
+                -- Concatenamos solo valores positivos sin dejar || colgando
                 {% for col in cols %}
-                    case 
+                    (case 
                         when {{ col }} = '+' 
                             then '{{ col | replace("_", " ") }} y '
                         else '' 
-                    end ||
+                    end)
+                    {% if not loop.last %} || {% endif %}
                 {% endfor %}
-                '', 
-                ' y $', '' 
-            )
+            , ' y $', '')
         )
     end
 )

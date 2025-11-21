@@ -6,12 +6,12 @@
 
 with accidentes as (
     select *
-    from {{ source ('desarrollo', 'accidentes_final') }}
+    from {{ ref ('base_source') }}
 ),
 
 uniendo_edades as (
     select
-    distinct {{ dbt_utils.generate_surrogate_key([ 'rango_de_edade' ]) }} as id_rango_edades,
+    distinct id_rango_edades,
     rango_de_edade::varchar as rango_edad
     from accidentes 
 )

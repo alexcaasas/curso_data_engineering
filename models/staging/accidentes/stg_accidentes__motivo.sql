@@ -6,13 +6,13 @@
 
 with accidentes as (
     select *
-    from {{ source ('desarrollo', 'accidentes_final') }}
+    from {{ ref('base_source') }}
 ),
 
 motivos as (
     select
-    distinct {{ dbt_utils.generate_surrogate_key(["Etanol", "Drogas"]) }} as id_motivo,
-    {{ motivo_toxicologico(["Etanol", "Drogas"]) }} as motivo
+    distinct id_motivo,
+    motivo
     from accidentes
 )
 
