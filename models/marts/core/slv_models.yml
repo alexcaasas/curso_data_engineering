@@ -1,0 +1,155 @@
+version: 2
+
+sources:
+  - name: modelos_silver
+    description: ""
+    database: alumno1_dev_silver_db
+    schema: accidentes
+    tables:
+      - name: stg_accidentes__accidente
+        description: ""
+        columns:
+          - name: id_accidente
+            data_type: varchar
+            description: ""
+          - name: id_conductor
+            data_type: varchar
+            description: ""
+            tests:
+              - relationships:
+                  field: id_conductor
+                  to: ref('stg_accidentes__conductor')
+          - name: id_provincia
+            data_type: varchar
+            description: ""
+            tests:
+              - relationships:
+                  field: id_provincia
+                  to: ref('stg_accidentes__provincia')
+          - name: id_vehiculo
+            data_type: varchar
+            description: ""
+            tests:
+              - relationships:
+                  field: id_vehiculo
+                  to: ref('stg_accidentes__vehiculo')
+          - name: id_via
+            data_type: varchar
+            description: ""
+          - name: fecha_accidente
+            data_type: date
+            description: ""
+          - name: matricula
+            data_type: varchar
+            description: ""
+          - name: num_victimas_mortales
+            data_type: number
+            description: ""
+          - name: test_toxicologico
+            data_type: varchar
+            description: ""
+          - name: id_motivo
+            data_type: varchar
+            description: ""
+
+      - name: stg_accidentes__com_autonoma
+        description: ""
+        columns:
+          - name: id_com_autonoma
+            data_type: varchar
+            description: ""
+          - name: com_autonoma
+            data_type: varchar
+            description: ""
+
+      - name: stg_accidentes__conductor
+        description: ""
+        columns:
+          - name: id_conductor
+            data_type: varchar
+            description: ""
+          - name: dni
+            data_type: varchar
+            description: ""
+          - name: id_sexo
+            data_type: varchar
+            description: ""
+          - name: id_rango_edades
+            data_type: varchar
+            description: ""
+
+      - name: stg_accidentes__motivo
+        description: ""
+        columns:
+          - name: id_motivo
+            data_type: varchar
+            description: ""
+          - name: motivo
+            data_type: varchar
+            description: ""
+
+      - name: stg_accidentes__provincia
+        description: ""
+        columns:
+          - name: id_provincia
+            data_type: varchar
+            description: ""
+          - name: provincia
+            data_type: varchar
+            description: ""
+          - name: id_com_autonoma
+            data_type: varchar
+            description: ""
+
+      - name: stg_accidentes__rango_edades
+        description: ""
+        columns:
+          - name: id_rango_edades
+            data_type: varchar
+            description: ""
+          - name: rango_edad
+            data_type: varchar
+            description: ""
+
+      - name: stg_accidentes__sexo
+        description: ""
+        columns:
+          - name: id_sexo
+            data_type: varchar
+            description: ""
+          - name: sexo
+            data_type: varchar
+            description: ""
+
+      - name: stg_accidentes__tipo_vehiculo
+        description: ""
+        columns:
+          - name: id_tipo_vehiculo
+            data_type: varchar
+            description: ""
+          - name: tipo_vehiculo
+            data_type: varchar
+            description: ""
+
+      - name: stg_accidentes__tipo_via
+        description: ""
+        columns:
+          - name: id_via
+            data_type: varchar
+            description: ""
+          - name: tipo_via
+            data_type: varchar
+            description: ""
+
+      - name: stg_accidentes__vehiculo
+        description: ""
+        columns:
+          - name: id_vehiculo
+            data_type: varchar
+            description: ""
+          - name: matricula
+            data_type: varchar
+            description: ""
+          - name: id_tipo_vehiculo
+            data_type: varchar
+            description: ""

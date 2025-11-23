@@ -1,6 +1,6 @@
 {{
     codegen.generate_source(
-        schema_name = 'DBT_AMARTIN',
+        schema_name = 'ACCIDENTES',
         database_name = 'ALUMNO1_DEV_SILVER_DB',
         generate_columns = True,
         include_descriptions=True,

@@ -9,13 +9,11 @@ with accidentes as (
     from {{ ref ('base_source') }}
 ),
 
-uniendo_conductor as (
+uniendo_sexo as (
     select
-    distinct id_conductor,
-    dni,
-    id_sexo,
-    id_rango_edades
+    distinct id_sexo,
+    sexo
     from accidentes 
 )
 
-select * from uniendo_conductor
+select * from uniendo_sexo

@@ -6,13 +6,13 @@
 
 with accidentes as (
     select *
-    from {{ source ('desarrollo', 'accidentes_final') }}
+    from {{ ref ('base_source') }}
 ),
 
 uniendo_vias as (
     select
-    distinct {{ dbt_utils.generate_surrogate_key([ 'zona' ]) }} as id_via,
-    zona::varchar as via,
+    distinct id_via,
+    zona::varchar as tipo_via
     from accidentes 
 )
 
