@@ -13,8 +13,8 @@ uniendo_provincias as (
     select
     distinct id_provincia,
     CASE 
-        WHEN provincia <> 'Araba/Álava' THEN SPLIT_PART(provincia, '/', 1)
-        ELSE SPLIT_PART(provincia, '/', 2)
+        WHEN provincia = 'Araba/Álava' THEN SPLIT_PART(provincia, '/', 2)
+        ELSE SPLIT_PART(provincia, '/', 1)
     END as provincia,
     id_com_autonoma
     from accidentes 

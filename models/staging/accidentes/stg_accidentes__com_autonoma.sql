@@ -13,7 +13,7 @@ uniendo_com_autonoma as (
     select
     distinct id_com_autonoma,
     CASE 
-        WHEN REPLACE(ccaa, '-', ' ') = 'Canarias' THEN 'Islas Canarias'
+        WHEN ccaa = 'Canarias' THEN 'Islas Canarias'
         ELSE REPLACE(ccaa, '-', ' ')
     END AS com_autonoma,
     from accidentes 
