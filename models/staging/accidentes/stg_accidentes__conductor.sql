@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='view'
+        materialized='incremental'
     )
 }}
 
@@ -14,8 +14,16 @@ uniendo_conductor as (
     distinct id_conductor,
     dni,
     id_sexo,
-    id_rango_edades
+    id_rango_edades,
+    fecha_ingesta
     from accidentes 
 )
 
 select * from uniendo_conductor
+
+
+{% if is_incremental() %}
+
+  where fecha_ingesta > (select max(fecha_ingesta) from {{ this }})
+
+{% endif %}

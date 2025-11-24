@@ -1,6 +1,7 @@
 {{
     config(
         materialized='incremental',
+        incremental_strategy='merge',
         unique_key='id_accidente'
     )
 }}
@@ -22,7 +23,8 @@ valores_base as (
     victimas_mortales as num_victimas_mortales,
     resultado_toxicoloxico as test_toxicologico,
     id_motivo,
-    dni
+    dni,
+    fecha_ingesta
     from accidentes
 )
 
@@ -30,7 +32,7 @@ select * from valores_base
 
 {% if is_incremental() %}
 
-  where fecha_accidente >= (select max(fecha_accidente) from {{ this }})
+  where fecha_ingesta > (select max(fecha_ingesta) from {{ this }})
 
 {% endif %}
 

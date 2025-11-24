@@ -44,7 +44,8 @@ limpieza_base as (
         organismo,
         rol_no_siniestro,
         psicofarmacos,
-        antiepilepticos
+        antiepilepticos,
+        fecha_ingesta
     from accidentes
 )
 

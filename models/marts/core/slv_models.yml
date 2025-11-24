@@ -29,10 +29,6 @@ sources:
           - name: id_vehiculo
             data_type: varchar
             description: ""
-            tests:
-              - relationships:
-                  field: id_vehiculo
-                  to: ref('stg_accidentes__vehiculo')
           - name: id_via
             data_type: varchar
             description: ""

@@ -2,7 +2,6 @@
 
 (
     case
-        -- Caso limpio: todos son '-'
         when (
             {% for col in cols %}
                 {{ col }} = '-' {% if not loop.last %} and {% endif %}
@@ -12,7 +11,6 @@
 
         else (
             regexp_replace(
-                -- Concatenamos solo valores positivos sin dejar || colgando
                 {% for col in cols %}
                     (case 
                         when {{ col }} = '+' 
