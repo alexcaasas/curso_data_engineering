@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='incremental'
+        materialized='view'
     )
 }}
 
@@ -13,15 +13,8 @@ uniendo_tipo_vehiculo as (
     select
     distinct id_vehiculo,
     matricula,
-    id_tipo_vehiculo,
-    fecha_ingesta
+    id_tipo_vehiculo
     from accidentes 
 )
 
 select * from uniendo_tipo_vehiculo
-
-{% if is_incremental() %}
-
-  where fecha_ingesta > (select max(fecha_ingesta) from {{ this }})
-
-{% endif %}

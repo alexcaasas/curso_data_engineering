@@ -1,11 +1,12 @@
 {{
     config(
-        materialized='incremental',
+        materialized = 'incremental',
         incremental_strategy='merge',
-        unique_key='id_accidente',
-        on_schema_change='sync_all_columns'
+        unique_key='id_accidente'
     )
 }}
+
+
 
 with accidentes as (
     select *
@@ -14,7 +15,7 @@ with accidentes as (
 
 valores_base as (
     select 
-    {{ dbt_utils.generate_surrogate_key([ 'dni','provincia', 'matricula', 'zona', 'data']) }} as id_accidente,
+    id_accidente,
     id_conductor,
     id_provincia,
     id_vehiculo,
@@ -27,6 +28,7 @@ valores_base as (
     dni,
     fecha_ingesta
     from accidentes
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY id_accidente ORDER BY fecha_ingesta desc) = 1
 )
 
 select * from valores_base

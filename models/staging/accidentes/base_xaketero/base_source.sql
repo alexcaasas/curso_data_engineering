@@ -11,6 +11,7 @@ with accidentes as (
 
 limpieza_base as (
     select 
+        {{ dbt_utils.generate_surrogate_key([ 'dni','provincia', 'matricula', 'zona', 'data']) }} as id_accidente,
         {{ dbt_utils.generate_surrogate_key([ 'sexo' ]) }} as id_sexo,
         {{ dbt_utils.generate_surrogate_key([ 'matricula' ]) }} as id_vehiculo,
         {{ dbt_utils.generate_surrogate_key([ 'tipo_vehiculo' ]) }} as id_tipo_vehiculo,
