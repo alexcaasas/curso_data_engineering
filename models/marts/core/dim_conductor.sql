@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='table'
+        materialized='incremental'
     )
 }}
 
@@ -28,3 +28,10 @@ conductor as (
 )
 
 select * from conductor
+
+
+{% if is_incremental() %}
+
+  where fecha_ingesta > (select max(fecha_ingesta) from {{ this }})
+
+{% endif %}
