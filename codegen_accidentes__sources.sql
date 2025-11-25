@@ -1,7 +1,7 @@
 {{
     codegen.generate_source(
         schema_name = 'ACCIDENTES',
-        database_name = 'ALUMNO1_DEV_SILVER_DB',
+        database_name = 'ALUMNO1_DEV_GOLD_DB',
         generate_columns = True,
         include_descriptions=True,
         include_data_types=True,

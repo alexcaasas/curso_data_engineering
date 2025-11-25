@@ -1,0 +1,128 @@
+version: 2
+
+sources:
+  - name: modelos_gold
+    description: ""
+    database: alumno1_dev_gold_db
+    schema: accidentes
+    tables:
+      - name: dim_conductor
+        description: ""
+        columns:
+          - name: id_conductor
+            data_type: varchar
+            description: ""
+          - name: dni
+            data_type: varchar
+            description: ""
+          - name: sexo
+            data_type: varchar
+            description: ""
+          - name: rango_edad
+            data_type: varchar
+            description: ""
+
+      - name: dim_fecha
+        description: ""
+        columns:
+          - name: fecha
+            data_type: date
+            description: ""
+          - name: dia
+            data_type: number
+            description: ""
+          - name: mes
+            data_type: number
+            description: ""
+          - name: trimestre
+            data_type: number
+            description: ""
+          - name: finde
+            data_type: varchar
+            description: ""
+
+      - name: dim_motivo
+        description: ""
+        columns:
+          - name: id_motivo
+            data_type: varchar
+            description: ""
+          - name: motivo
+            data_type: varchar
+            description: ""
+
+      - name: dim_tipo_via
+        description: ""
+        columns:
+          - name: id_via
+            data_type: varchar
+            description: ""
+          - name: tipo_via
+            data_type: varchar
+            description: ""
+
+      - name: dim_ubicacion
+        description: ""
+        columns:
+          - name: id_provincia
+            data_type: varchar
+            description: ""
+          - name: provincia
+            data_type: varchar
+            description: ""
+          - name: com_autonoma
+            data_type: varchar
+            description: ""
+
+      - name: dim_vehiculo
+        description: ""
+        columns:
+          - name: id_vehiculo
+            data_type: varchar
+            description: ""
+          - name: matricula
+            data_type: varchar
+            description: ""
+          - name: tipo_vehiculo
+            data_type: varchar
+            description: ""
+
+      - name: fct_accidente
+        description: ""
+        columns:
+          - name: id_accidente
+            data_type: varchar
+            description: ""
+          - name: id_conductor
+            data_type: varchar
+            description: ""
+          - name: id_provincia
+            data_type: varchar
+            description: ""
+          - name: id_vehiculo
+            data_type: varchar
+            description: ""
+          - name: id_via
+            data_type: varchar
+            description: ""
+          - name: fecha_accidente
+            data_type: date
+            description: ""
+          - name: matricula
+            data_type: varchar
+            description: ""
+          - name: num_victimas_mortales
+            data_type: number
+            description: ""
+          - name: test_toxicologico
+            data_type: varchar
+            description: ""
+          - name: id_motivo
+            data_type: varchar
+            description: ""
+          - name: dni
+            data_type: varchar
+            description: ""
+          - name: fecha_ingesta
+            data_type: timestamp_ntz
+            description: ""
