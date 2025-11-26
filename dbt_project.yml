@@ -43,6 +43,6 @@ models:
       +materialized: table
       +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD_DB"
       core:
-      +schema: accidentes
+        +schema: accidentes
 flags:
   require_generic_test_arguments_property: true

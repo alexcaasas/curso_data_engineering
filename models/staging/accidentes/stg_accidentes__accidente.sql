@@ -1,6 +1,7 @@
 {{
     config(
-        materialized='incremental',
+        materialized = 'incremental',
+        incremental_strategy='merge',
         unique_key='id_accidente'
     )
 }}
@@ -12,7 +13,7 @@ with accidentes as (
 
 valores_base as (
     select 
-    {{ dbt_utils.generate_surrogate_key([ 'dni','provincia', 'matricula', 'zona', 'data']) }} as id_accidente,
+    id_accidente,
     id_conductor,
     id_provincia,
     id_vehiculo,
@@ -22,15 +23,17 @@ valores_base as (
     victimas_mortales as num_victimas_mortales,
     resultado_toxicoloxico as test_toxicologico,
     id_motivo,
-    dni
+    dni,
+    fecha_ingesta
     from accidentes
+    QUALIFY ROW_NUMBER() OVER (PARTITION BY id_accidente ORDER BY fecha_ingesta desc) = 1
 )
 
 select * from valores_base
 
 {% if is_incremental() %}
 
-  where fecha_accidente >= (select max(fecha_accidente) from {{ this }})
+  where fecha_ingesta > (select max(fecha_ingesta) from {{ this }})
 
 {% endif %}
 

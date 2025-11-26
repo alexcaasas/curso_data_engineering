@@ -131,3 +131,6 @@ sources:
             description: ""
             tests:
               - not_null
+          - name: fecha_ingesta
+            data_type: timestamp_ntz
+            description: ""
