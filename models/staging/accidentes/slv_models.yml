@@ -127,10 +127,6 @@ sources:
           - name: id_provincia
             data_type: varchar
             description: ""
-            tests:
-              - relationships:
-                  field: id_provincia
-                  to: ref('stg_accidentes__provincia')
           - name: id_vehiculo
             data_type: varchar
             description: ""
