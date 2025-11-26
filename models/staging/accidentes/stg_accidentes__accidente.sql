@@ -6,8 +6,6 @@
     )
 }}
 
-
-
 with accidentes as (
     select *
     from {{ ref ('base_source') }}

@@ -25,12 +25,12 @@ junto as (
 
 motivo_accidentado as (
     select motivo,
-    count(*) as conteo,
+    count(*) as num_accidentes,
     sum(num_victimas_mortales) as num_victimas_mortales
     from junto
     where motivo <> 'Limpio'
     group by motivo
-    order by conteo desc
+    order by num_accidentes desc
 )
 
 select * from motivo_accidentado

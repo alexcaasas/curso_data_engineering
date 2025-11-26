@@ -17,10 +17,16 @@ motivos as (
 )
 
 /*
-CASE WHEN Etanol = '+' and Drogas = '+' THEN 'Alcohol y Drogas'
-        WHEN Etanol = '+' and Drogas = '-' THEN 'Alcohol'
-        WHEN Etanol = '-' and Drogas = '+' THEN 'Drogas'
-        WHEN Etanol = '-' and Drogas = '-' THEN 'Limpio'
+CASE 
+    WHEN Etanol = '+' AND Drogas = '+' AND Antidepresivos = '+' THEN 'Alcohol, Drogas y Antidepresivos'
+    WHEN Etanol = '+' AND Drogas = '-' AND Antidepresivos = '+' THEN 'Alcohol y Antidepresivos'
+    WHEN Etanol = '-' AND Drogas = '+' AND Antidepresivos = '+' THEN 'Drogas y Antidepresivos'
+    WHEN Etanol = '-' AND Drogas = '-' AND Antidepresivos = '+' THEN 'Antidepresivos'
+
+    WHEN Etanol = '+' AND Drogas = '+' AND Antidepresivos = '-' THEN 'Alcohol y Drogas'
+    WHEN Etanol = '+' AND Drogas = '-' AND Antidepresivos = '-' THEN 'Alcohol'
+    WHEN Etanol = '-' AND Drogas = '+' AND Antidepresivos = '-' THEN 'Drogas'
+    WHEN Etanol = '-' AND Drogas = '-' AND Antidepresivos = '-' THEN 'Limpio'
 END AS motivos
 */
 
